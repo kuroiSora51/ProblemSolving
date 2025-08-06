@@ -29,12 +29,12 @@ class Graph {
       }
 };
 
-void DFS (Vertex* v) {
+void dfs (Vertex* v) {
    if (v->used) return;
    v->used = true;
    
    for (Vertex* u: v->adj)
-      DFS(u);
+      dfs(u);
 }
 
 int main () {
@@ -55,7 +55,7 @@ int main () {
       if (v.used) continue;
       else components++;
 
-      DFS(&v);
+      dfs(&v);
       road.push_back(v);
    }
    

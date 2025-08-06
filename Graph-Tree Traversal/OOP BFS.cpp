@@ -34,26 +34,26 @@ class Graph {
 };
 
 
-void BFS(Vertex* start, Vertex* end) {
-   queue<Vertex*> q;
-   start->used = true;
-   start->dist = 0;
-   start->parent = nullptr;
-   q.push(start);
+void bfs(Vertex* start, Vertex* end) {
+    queue<Vertex*> q;
+    start->used = true;
+    start->dist = 0;
+    start->parent = nullptr;
+    q.push(start);
 
-   while (!q.empty()) {
-      Vertex* v = q.front(); q.pop();
+    while (!q.empty()) {
+        Vertex* v = q.front(); q.pop();
 
-      for (Vertex* u: v->adj) {
-         if (u->used) continue;
-         u->used = true;
-         u->dist = v->dist + 1;
-         u->parent = v;
+        for (Vertex* u: v->adj) {
+            if (u->used) continue;
+            u->used = true;
+            u->dist = v->dist + 1;
+            u->parent = v;
 
-         q.push(u);
-         if (u->val == end->val) break;
-      }
-   }
+            q.push(u);
+            if (u->val == end->val) break;
+        }
+    }
 }
 
 int main () {
@@ -70,7 +70,7 @@ int main () {
    }
    Vertex* start = &G.vertices[1];
    Vertex* end = &G.vertices[n];
-   BFS(start, end);
+   bfs(start, end);
 
    if (!end->used) {
       cout << "IMPOSSIBLE";
